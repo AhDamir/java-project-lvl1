@@ -1,17 +1,18 @@
-package hexlet.code;
+package hexlet.code.games;
 
+import java.util.Random;
 import java.util.Scanner;
 
-public class Games {
+public class Even {
     public static  void even(String userName) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         final int correctAnswerCounter = 3;
         for (int i = 0; i < correctAnswerCounter; i++) {
             System.out.print("Question: ");
-            int number = randomNumber();
+            int number = generateRandomNumber();
             System.out.println(number);
             System.out.print("Your answer: ");
+            Scanner scanner = new Scanner(System.in);
             String answer = scanner.nextLine();
 
             if (number % 2 == 0) {
@@ -35,9 +36,13 @@ public class Games {
         System.out.println("Congratulations, " + userName + "!");
     }
 
-    public static int randomNumber() {
-        final int lowerRandomLimit = 1;
-        final int upperRandomLimit = 100;
-        return (int) (Math.random() * upperRandomLimit) + lowerRandomLimit;
+    public static int generateRandomNumber() {
+        Random random = new Random();
+        final int upperRandomLimit = 20;
+        return random.nextInt(upperRandomLimit) + 1;
     }
+
+   /* public boolean isEven(int number) {
+
+    }*/
 }
