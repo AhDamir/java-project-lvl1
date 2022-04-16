@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -17,11 +18,13 @@ public class App {
         final int item3 = 3;
         System.out.println("4 - GCD");
         final int item4 = 4;
+        System.out.println("5 - Progression");
+        final int item5 = 5;
         System.out.println("0 - Exit");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
-        while (!scanner.hasNextInt() || !scanner.hasNext("[01234]")) {
-            System.out.println("Please enter a number from 0 to 4!");
+        while (!scanner.hasNextInt() || !scanner.hasNext("[012345]")) {
+            System.out.println("Please enter a number from 0 to 5!");
             scanner.next();
         }
         switch (scanner.nextInt()) {
@@ -30,6 +33,7 @@ public class App {
                 Cli.getNameAndGreetings();
                 System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
                 Even.even(Cli.getUserName());
+
             }
             case item3 -> {
                 Cli.getNameAndGreetings();
@@ -40,6 +44,11 @@ public class App {
                 Cli.getNameAndGreetings();
                 System.out.println("Find the greatest common divisor of given numbers.");
                 GCD.gcd(Cli.getUserName());
+            }
+            case item5 -> {
+                Cli.getNameAndGreetings();
+                System.out.println("What number is missing in the progression?");
+                Progression.progression(Cli.getUserName());
             }
             default -> System.out.println("See you!");
         }
