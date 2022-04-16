@@ -43,9 +43,5 @@ public class Engine {
         int i = random.nextInt(2);
         return operators[i];
     }
-
-    public static boolean isEven(int dataForQuestion) {
-        return dataForQuestion % 2 == 0;
-    }
 }
 

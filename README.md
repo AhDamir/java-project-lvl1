@@ -10,3 +10,5 @@
 [GCD](https://asciinema.org/connect/c0999bc2-f020-46b1-942d-e1d23610d216)
 
 [Progression](https://asciinema.org/connect/c0999bc2-f020-46b1-942d-e1d23610d216)
+
+[Prime](https://asciinema.org/a/kZPWpTpuYEueBGAW9XIyFnvnS)

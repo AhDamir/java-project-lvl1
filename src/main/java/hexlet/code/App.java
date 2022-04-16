@@ -4,6 +4,7 @@ import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 import java.util.Scanner;
 
@@ -20,10 +21,12 @@ public class App {
         final int item4 = 4;
         System.out.println("5 - Progression");
         final int item5 = 5;
+        System.out.println("6 - Prime");
+        final int item6 = 6;
         System.out.println("0 - Exit");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
-        while (!scanner.hasNextInt() || !scanner.hasNext("[012345]")) {
+        while (!scanner.hasNextInt() || !scanner.hasNext("[0123456]")) {
             System.out.println("Please enter a number from 0 to 5!");
             scanner.next();
         }
@@ -49,6 +52,11 @@ public class App {
                 Cli.getNameAndGreetings();
                 System.out.println("What number is missing in the progression?");
                 Progression.progression(Cli.getUserName());
+            }
+            case item6 -> {
+                Cli.getNameAndGreetings();
+                System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'");
+                Prime.prime(Cli.getUserName());
             }
             default -> System.out.println("See you!");
         }
