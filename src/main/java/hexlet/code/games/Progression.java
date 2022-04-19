@@ -31,7 +31,8 @@ public class Progression {
             stringProgression[numberOfUnknownInProgression] = "..";
             String dataForQuestion = Arrays.toString(stringProgression)
                     .replace("[", "")
-                    .replace("]", "");
+                    .replace("]", "")
+                    .replace(",", "");
             Engine.askQuestion(dataForQuestion);
             String answer = Engine.getAnswer();
             if (answer.equals(unknown)) {
