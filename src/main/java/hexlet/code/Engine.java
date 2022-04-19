@@ -21,7 +21,7 @@ public class Engine {
 
     public static void getWrongAnswer(String answer, String result, String userName) {
         System.out.println("'" + answer + "'" + " is wrong answer ;(. Correct answer was '" + result + "'.");
-        System.out.println("Let's try again, " + userName + ".");
+        System.out.println("Let's try again, " + userName + "!");
     }
 
     public static void getCongratulations(String userName) {
