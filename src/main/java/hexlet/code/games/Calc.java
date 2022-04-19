@@ -11,7 +11,7 @@ public class Calc {
             int a = Engine.generateRandomNumber(upperRandomLimit);
             String operator = Engine.generateOperator();
             int b = Engine.generateRandomNumber(upperRandomLimit);
-            String dataForQuestion = a + operator + b;
+            String dataForQuestion = a + " " + operator+ " " + b;
             Engine.askQuestion(dataForQuestion);
             int result = switch (operator) {
                 case "+" -> a + b;
