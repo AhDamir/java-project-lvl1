@@ -27,7 +27,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
         while (!scanner.hasNextInt() || !scanner.hasNext("[0123456]")) {
-            System.out.println("Please enter a number from 0 to 5!");
+            System.out.println("Please enter a number from 0 to 6!");
             scanner.next();
         }
         switch (scanner.nextInt()) {
