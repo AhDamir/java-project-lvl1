@@ -2,16 +2,18 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class GCD {
-    public static  void gcd(String userName) {
-        final int correctAnswerCounter = 3;
-        for (int i = 0; i < correctAnswerCounter; i++) {
-            final int upperRandomLimit = 100;
-            int a = Engine.generateRandomNumber(upperRandomLimit);
-            int b = Engine.generateRandomNumber(upperRandomLimit);
-            String dataForQuestion = a + " " + b;
-            Engine.askQuestion(dataForQuestion);
+import java.util.Random;
 
+public class GCD {
+    public static void run() {
+        String gameDescription = "Find the greatest common divisor of given numbers.";
+        final int numberOfQuestions = 3;
+
+        String[][] dataForQuestion = new String[numberOfQuestions][2];
+        for (var i = 0; i < numberOfQuestions; i++) {
+            int a = generateRandomNumber();
+            int b = generateRandomNumber();
+            dataForQuestion[i][0] = a + " " + b;
             int result = 0;
             if (a == b) {
                 result = a;
@@ -22,14 +24,14 @@ public class GCD {
                     b = result;
                 }
             }
-            String answer = Engine.getAnswer();
-            if (answer.equals(String.valueOf(result))) {
-                Engine.getCorrectAnswer();
-            } else {
-                Engine.getWrongAnswer(answer, String.valueOf(result), userName);
-                return;
-            }
+            dataForQuestion[i][1] = String.valueOf(result);
         }
-        Engine.getCongratulations(userName);
+        Engine.run(gameDescription, dataForQuestion);
+    }
+
+    public static int generateRandomNumber() {
+        Random random = new Random();
+        final int upperRandomLimit = 100;
+        return random.nextInt(upperRandomLimit) + 1;
     }
 }
