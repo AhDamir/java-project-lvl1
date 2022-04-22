@@ -2,33 +2,39 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class Calc {
-    public static  void calc(String userName) {
+import java.util.Random;
 
-        final int correctAnswerCounter = 3;
-        for (int i = 0; i < correctAnswerCounter; i++) {
-            final int upperRandomLimit = 20;
-            int a = Engine.generateRandomNumber(upperRandomLimit);
-            String operator = Engine.generateOperator();
-            int b = Engine.generateRandomNumber(upperRandomLimit);
-            String dataForQuestion = a + " " + operator + " " + b;
-            Engine.askQuestion(dataForQuestion);
+public class Calc {
+    public static  void run() {
+        String gameDescription = "What is the result of the expression?";
+        final int numberOfQuestions = 3;
+
+        String[][] dataForQuestion = new String[numberOfQuestions][2];
+        for (var i = 0; i < numberOfQuestions; i++) {
+            int a = generateRandomNumber();
+            String operator = generateOperator();
+            int b = generateRandomNumber();
+            dataForQuestion[i][0] = a + " " + operator + " " + b;
             int result = switch (operator) {
                 case "+" -> a + b;
                 case "-" -> a - b;
                 case "*" -> a * b;
                 default -> 0;
             };
-            String answer = Engine.getAnswer();
-            if (answer.equals(String.valueOf(result))) {
-                Engine.getCorrectAnswer();
-            } else {
-                Engine.getWrongAnswer(answer, String.valueOf(result), userName);
-                return;
-            }
+            dataForQuestion[i][1] = String.valueOf(result);
         }
-        Engine.getCongratulations(userName);
+        Engine.run(gameDescription, dataForQuestion);
+    }
+    public static int generateRandomNumber() {
+        Random random = new Random();
+        final int upperRandomLimit = 20;
+        return random.nextInt(upperRandomLimit) + 1;
     }
 
-
+    public static String generateOperator() {
+        Random random = new Random();
+        String[] operators = {"-", "+", "*"};
+        int i = random.nextInt(operators.length);
+        return operators[i];
+    }
 }
