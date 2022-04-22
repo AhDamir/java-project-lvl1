@@ -1,22 +1,26 @@
 package hexlet.code.games;
 
 import java.util.Arrays;
+import java.util.Random;
+
 import hexlet.code.Engine;
 
 public class Progression {
-    public static  void progression(String userName) {
+    public static void run() {
+        String gameDescription = "What number is missing in the progression?";
+        final int numberOfQuestions = 3;
 
-        final int correctAnswerCounter = 3;
-        for (int i = 0; i < correctAnswerCounter; i++) {
+        String[][] dataForQuestion = new String[numberOfQuestions][2];
+        for (var i = 0; i < numberOfQuestions; i++) {
             final int upperLimitOfProgressionLength = 13;
             final int lowerLimitOfProgressionLength = 5;
-            int progressionLength = Engine.generateRandomNumber(lowerLimitOfProgressionLength,
+            int progressionLength = generateRandomNumber(lowerLimitOfProgressionLength,
                     upperLimitOfProgressionLength);
             int[] progression = new int[progressionLength];
-            final int firstNumberUpperRandomLimit = 20;
-            progression[0] = Engine.generateRandomNumber(firstNumberUpperRandomLimit);
+            final int progressionsFirstNumberUpperRandomLimit = 20;
+            progression[0] = generateRandomNumber(progressionsFirstNumberUpperRandomLimit);
             final int progressionStepLimit = 10;
-            int progressionStep = Engine.generateRandomNumber(progressionStepLimit);
+            int progressionStep = generateRandomNumber(progressionStepLimit);
             for (var j = 1; j < progressionLength; j++) {
                 progression[j] = progression[j - 1] + progressionStep;
             }
@@ -26,22 +30,26 @@ public class Progression {
                 stringProgression[k] = String.valueOf(progression[k]);
             }
 
-            int numberOfUnknownInProgression = Engine.generateRandomNumber(0, progressionLength - 1);
+            int numberOfUnknownInProgression = generateRandomNumber(0, progressionLength - 1);
             String unknown = stringProgression[numberOfUnknownInProgression];
             stringProgression[numberOfUnknownInProgression] = "..";
-            String dataForQuestion = Arrays.toString(stringProgression)
+            dataForQuestion[i][0] = Arrays.toString(stringProgression)
                     .replace("[", "")
                     .replace("]", "")
                     .replace(",", "");
-            Engine.askQuestion(dataForQuestion);
-            String answer = Engine.getAnswer();
-            if (answer.equals(unknown)) {
-                Engine.getCorrectAnswer();
-            } else {
-                Engine.getWrongAnswer(answer, unknown, userName);
-                return;
-            }
+            dataForQuestion[i][1] = unknown;
         }
-        Engine.getCongratulations(userName);
+
+        Engine.run(gameDescription, dataForQuestion);
+    }
+
+    public static int generateRandomNumber(int upperRandomLimit) {
+        Random random = new Random();
+        return random.nextInt(upperRandomLimit) + 1;
+    }
+
+    public static int generateRandomNumber(int lowerRandomLimit, int upperRandomLimit) {
+        Random random = new Random();
+        return random.nextInt(upperRandomLimit - lowerRandomLimit + 1) + lowerRandomLimit;
     }
 }
