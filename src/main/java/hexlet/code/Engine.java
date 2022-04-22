@@ -1,47 +1,41 @@
 package hexlet.code;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
-    public static void askQuestion(String dataForQuestion) {
-        System.out.print("Question: ");
-        System.out.println(dataForQuestion);
+    public static void run(String gameDescription, String[][] dataForQuestion) {
+        getName();
+        System.out.println(gameDescription);
+        for (String[] strings : dataForQuestion) {
+            System.out.print("Question: ");
+            System.out.println(strings[0]);
+            System.out.print("Your answer: ");
+            Scanner scanner = new Scanner(System.in);
+            String answer = scanner.nextLine();
+            if (answer.equals(strings[1])) {
+                Engine.getCorrectAnswer();
+            } else {
+                Engine.getWrongAnswer(answer, strings[1]);
+                return;
+            }
+        }
+        System.out.println("Congratulations, " + userName + "!");
     }
-
-    public static String getAnswer() {
-        System.out.print("Your answer: ");
+    private static String userName;
+    public static  void getName() {
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        userName = scanner.nextLine();
+        System.out.println("Hello, " + userName + "!");
     }
 
     public static void getCorrectAnswer() {
         System.out.println("Correct!");
     }
 
-    public static void getWrongAnswer(String answer, String result, String userName) {
+    public static void getWrongAnswer(String answer, String result) {
         System.out.println("'" + answer + "'" + " is wrong answer ;(. Correct answer was '" + result + "'.");
         System.out.println("Let's try again, " + userName + "!");
     }
-
-    public static void getCongratulations(String userName) {
-        System.out.println("Congratulations, " + userName + "!");
-    }
-
-    public static int generateRandomNumber(int upperRandomLimit) {
-        Random random = new Random();
-        return random.nextInt(upperRandomLimit) + 1;
-    }
-
-    public static int generateRandomNumber(int lowerRandomLimit, int upperRandomLimit) {
-        Random random = new Random();
-        return random.nextInt(upperRandomLimit - lowerRandomLimit + 1) + lowerRandomLimit;
-    }
-    public static String generateOperator() {
-        Random random = new Random();
-        String[] operators = {"-", "+", "*"};
-        int i = random.nextInt(2);
-        return operators[i];
-    }
 }
-
