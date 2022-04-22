@@ -3,12 +3,12 @@
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 ![workflow](https://github.com//AhDAmir/java-project-lvl1/actions/workflows/main.yml/badge.svg)
 
-[Even](https://asciinema.org/a/llPykGSz36rPZLSqEX0QENbuj)
+Even<a href="https://asciinema.org/a/llPykGSz36rPZLSqEX0QENbuj" target="_blank"><img src="https://asciinema.org/a/llPykGSz36rPZLSqEX0QENbuj.svg" /></a>
 
-[Calc](https://asciinema.org/connect/c0999bc2-f020-46b1-942d-e1d23610d216)
+Calc<a href="https://asciinema.org/a/pZ7l21tyz0XFvzPDM7ymPKxuj" target="_blank"><img src="https://asciinema.org/a/pZ7l21tyz0XFvzPDM7ymPKxuj.svg" /></a>
 
-[GCD](https://asciinema.org/connect/c0999bc2-f020-46b1-942d-e1d23610d216)
+GCD<a href="https://asciinema.org/a/NwzKgWwIElIycAbro6DMQJLB4" target="_blank"><img src="https://asciinema.org/a/NwzKgWwIElIycAbro6DMQJLB4.svg" /></a>
 
-[Progression](https://asciinema.org/connect/c0999bc2-f020-46b1-942d-e1d23610d216)
+Progression<a href="https://asciinema.org/a/ifygkMbza1HJRpqz4ExBQYOGT" target="_blank"><img src="https://asciinema.org/a/ifygkMbza1HJRpqz4ExBQYOGT.svg" /></a>
 
-[Prime](https://asciinema.org/a/kZPWpTpuYEueBGAW9XIyFnvnS)
+Prime<a href="https://asciinema.org/a/kZPWpTpuYEueBGAW9XIyFnvnS" target="_blank"><img src="https://asciinema.org/a/kZPWpTpuYEueBGAW9XIyFnvnS.svg" /></a>
