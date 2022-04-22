@@ -2,30 +2,35 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class Prime {
-    public static  void prime(String userName) {
-        final int correctAnswerCounter = 3;
-        for (int i = 0; i < correctAnswerCounter; i++) {
-            final int upperRandomLimit = 101;
-            int dataForQuestion = Engine.generateRandomNumber(2, upperRandomLimit);
+import java.util.Random;
 
-            Engine.askQuestion(String.valueOf(dataForQuestion));
-            String answer = Engine.getAnswer();
-            String result;
-            if (isPrime(dataForQuestion)) {
-                result = "yes";
+public class Prime {
+    public static void run() {
+        String gameDescription = "Answer 'yes' if given number is prime. Otherwise answer 'no'";
+        final int numberOfQuestions = 3;
+
+        String[][] dataForQuestion = new String[numberOfQuestions][2];
+        for (var i = 0; i < numberOfQuestions; i++) {
+            final int upperRandomLimit = 101;
+            final int lowerRandomLimit = 2;
+            int question = generateRandomNumber(lowerRandomLimit, upperRandomLimit);
+            String correctAnswer;
+            if (isPrime(question)) {
+                correctAnswer = "yes";
             } else {
-                result = "no";
+                correctAnswer = "no";
             }
-            if (answer.equals(result)) {
-                Engine.getCorrectAnswer();
-            } else {
-                Engine.getWrongAnswer(answer, result, userName);
-                return;
-            }
+            dataForQuestion[i][0] = String.valueOf(question);
+            dataForQuestion[i][1] = correctAnswer;
         }
-        Engine.getCongratulations(userName);
+        Engine.run(gameDescription, dataForQuestion);
     }
+
+    public static int generateRandomNumber(int lowerRandomLimit, int upperRandomLimit) {
+        Random random = new Random();
+        return random.nextInt(upperRandomLimit - lowerRandomLimit + 1) + lowerRandomLimit;
+    }
+
     public static boolean isPrime(int dataForQuestion) {
         int divider = 1;
         for (var j = 1; j < dataForQuestion - 1; j++) {
