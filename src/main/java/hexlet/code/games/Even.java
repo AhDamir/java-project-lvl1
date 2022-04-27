@@ -1,38 +1,36 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Even {
+    public static final String GAMEDESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    public static final int MAXNUMTODEFINE = 20;
+
     public static  void run() {
-        String gameDescription = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        final int numberOfQuestions = 3;
-
-        String[][] dataForQuestion = new String[numberOfQuestions][2];
-        for (var i = 0; i < numberOfQuestions; i++) {
-            var question = generateRandomNumber();
-            String correctAnswer;
-            if (isEven(question)) {
-                correctAnswer = "yes";
-            } else {
-                correctAnswer = "no";
-            }
-            dataForQuestion[i][0] = String.valueOf(question);
-            dataForQuestion[i][1] = correctAnswer;
+        String[][] roundsData = new String[Engine.NUMBEROFROUNDS][2];
+        for (var i = 0; i < Engine.NUMBEROFROUNDS; i++) {
+            roundsData[i] = generateRoundData();
         }
+        Engine.run(GAMEDESCRIPTION, roundsData);
+    }
 
-        Engine.run(gameDescription, dataForQuestion);
+    public static String[] generateRoundData() {
+        var question = Utils.generateRandomNumber(MAXNUMTODEFINE);
+        String correctAnswer;
+        if (isEven(question)) {
+            correctAnswer = "yes";
+        } else {
+            correctAnswer = "no";
+        }
+        String[] roundData = new String[2];
+        roundData[0] = String.valueOf(question);
+        roundData[1] = correctAnswer;
+        return roundData;
     }
 
     public static boolean isEven(int dataForQuestion) {
         return dataForQuestion % 2 == 0;
-    }
-
-    public static int generateRandomNumber() {
-        Random random = new Random();
-        final int upperRandomLimit = 20;
-        return random.nextInt(upperRandomLimit) + 1;
     }
 }
 
