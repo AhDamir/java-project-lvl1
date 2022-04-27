@@ -1,37 +1,36 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class GCD {
-    public static void run() {
-        String gameDescription = "Find the greatest common divisor of given numbers.";
-        final int numberOfQuestions = 3;
+    public static final String GAMEDESCRIPTION = "Find the greatest common divisor of given numbers.";
+    public static final int MAXNUMTODEFINE = 100;
 
-        String[][] dataForQuestion = new String[numberOfQuestions][2];
-        for (var i = 0; i < numberOfQuestions; i++) {
-            int a = generateRandomNumber();
-            int b = generateRandomNumber();
-            dataForQuestion[i][0] = a + " " + b;
-            int result = 0;
-            if (a == b) {
-                result = a;
-            } else {
-                while (a % b != 0) {
-                    result = a % b;
-                    a = b;
-                    b = result;
-                }
-            }
-            dataForQuestion[i][1] = String.valueOf(result);
+    public static void run() {
+        String[][] roundsData = new String[Engine.NUMBEROFROUNDS][2];
+        for (var i = 0; i < Engine.NUMBEROFROUNDS; i++) {
+            roundsData[i] = generateRoundData();
         }
-        Engine.run(gameDescription, dataForQuestion);
+        Engine.run(GAMEDESCRIPTION, roundsData);
     }
 
-    public static int generateRandomNumber() {
-        Random random = new Random();
-        final int upperRandomLimit = 100;
-        return random.nextInt(upperRandomLimit) + 1;
+    public static String[] generateRoundData() {
+        String[] roundData = new String[2];
+        int a = Utils.generateRandomNumber(MAXNUMTODEFINE);
+        int b = Utils.generateRandomNumber(MAXNUMTODEFINE);
+        roundData[0] = a + " " + b;
+        int result = 0;
+        if (a == b) {
+            result = a;
+        } else {
+            while (a % b != 0) {
+                result = a % b;
+                a = b;
+                b = result;
+            }
+        }
+        roundData[1] = String.valueOf(result);
+        return roundData;
     }
 }
