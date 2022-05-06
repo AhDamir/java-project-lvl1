@@ -26,13 +26,17 @@ public class Prime {
     }
 
     public static boolean isPrime(int dataForQuestion) {
-        int divider = 1;
-        for (var j = 1; j < dataForQuestion - 1; j++) {
-            divider += 1;
-            if (dataForQuestion % divider == 0) {
-                return false;
+        if (dataForQuestion > 1) {
+            int divider = 1;
+            for (var j = 1; j < dataForQuestion - 1; j++) {
+                divider += 1;
+                if (dataForQuestion % divider == 0) {
+                    return false;
+                }
             }
+            return true;
+        } else {
+            return false;
         }
-        return true;
     }
 }

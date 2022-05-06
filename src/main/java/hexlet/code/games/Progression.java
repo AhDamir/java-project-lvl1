@@ -1,6 +1,5 @@
 package hexlet.code.games;
 
-import java.util.Arrays;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
@@ -31,10 +30,7 @@ public class Progression {
         String unknown = stringProgression[numberOfUnknownInProgression];
         stringProgression[numberOfUnknownInProgression] = "..";
         String[] roundData = new String[2];
-        roundData[0] = Arrays.toString(stringProgression)
-                .replace("[", "")
-                .replace("]", "")
-                .replace(",", "");
+        roundData[0] = String.join(" ", stringProgression);
         roundData[1] = unknown;
         return roundData;
     }

@@ -29,7 +29,10 @@ public class App {
             case "5" -> Progression.run();
             case "6" -> Prime.run();
             case "0" -> System.out.println("See you!");
-            default -> throw new Error("Unknown program number entry");
+            default -> {
+                System.out.println("Unknown program number entry!"
+                        + " Start the application again and enter a number from 0 to 6.");
+            }
         }
     }
 }

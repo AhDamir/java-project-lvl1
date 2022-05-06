@@ -31,7 +31,7 @@ public class Calc {
             case '+' -> a + b;
             case '-' -> a - b;
             case '*' -> a * b;
-            default -> 0;
+            default -> throw new RuntimeException("Unknown operator!!!");
         };
     }
 }
